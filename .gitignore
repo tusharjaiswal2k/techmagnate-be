@@ -3,18 +3,29 @@
 
 # build output
 /dist
+/build
+/tmp
+.temp
+.tmp
 
 # testing
 /coverage
 
 # env files
 .env
+.env.development
+.env.test
+.env.production
 .env.*.local
 
 # logs
+logs
+*.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
 # IDE
 .vscode/*
