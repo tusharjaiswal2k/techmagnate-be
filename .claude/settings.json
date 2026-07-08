@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(docker --version)",
+      "Bash(wsl --list --verbose)",
+      "Bash(choco --version)",
+      "Bash(scoop --version)",
+      "Bash(where redis-server *)",
+      "Bash(curl -sI https://github.com)",
+      "Bash(curl -sI https://api.github.com/repos/tporadowski/redis/releases/latest)",
+      "Bash(curl -s https://api.github.com/repos/tporadowski/redis/releases/latest)",
+      "Bash(mkdir -p \"T:/redis\")",
+      "Bash(curl -L -o redis.zip \"https://github.com/tporadowski/redis/releases/download/v5.0.14.1/Redis-x64-5.0.14.1.zip\")",
+      "PowerShell(Start-Service -Name redis)",
+      "PowerShell(Get-Service -Name redis)",
+      "PowerShell(& \"T:\\\\redis\\\\redis-cli.exe\" -h 127.0.0.1 -p 6379 ping)",
+      "PowerShell(& \"T:\\\\redis\\\\redis-cli.exe\" -h 127.0.0.1 -p 6379 config get dir)",
+      "PowerShell(& \"T:\\\\redis\\\\redis-cli.exe\" -h 127.0.0.1 -p 6379 set testkey \"hello\")",
+      "PowerShell(& \"T:\\\\redis\\\\redis-cli.exe\" -h 127.0.0.1 -p 6379 get testkey)",
+      "PowerShell(Get-Service redis)",
+      "Bash(node -e ' *)"
+    ],
+    "additionalDirectories": [
+      "T:\\redis"
+    ]
+  }
+}

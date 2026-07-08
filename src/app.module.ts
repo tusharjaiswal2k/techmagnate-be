@@ -3,9 +3,12 @@ import { BullBoardModule } from '@bull-board/nestjs';
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { BulkUploadModule } from './bulk-upload/bulk-upload.module';
 import configuration from './config/configuration';
 import { validate } from './config/env.validation';
@@ -44,10 +47,11 @@ const bullBoardEnabled = process.env.ENABLE_BULL_BOARD !== 'false';
           }),
         ]
       : []),
+    AuthModule,
     TasksModule,
     BulkUploadModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, { provide: APP_GUARD, useClass: JwtAuthGuard }],
 })
 export class AppModule {}
